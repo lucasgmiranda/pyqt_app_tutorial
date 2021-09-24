@@ -6,13 +6,14 @@ import "controls"
 
 Window {
     id: mainWindow
-    width: 1000
-    height: 580
+    width: 1280
+    height: 720
     minimumWidth: 800
-    minimumHeight: 500
+    minimumHeight: 480
     visible: true
     color: "#00000000"
     title: qsTr("Course Qt Quick")
+
 
     // Remove title MenuBar
     flags: Qt.Window | Qt.FramelessWindowHint | Qt.AA_EnableHighDpiScaling
@@ -72,6 +73,12 @@ Window {
             btMaximizeRestore.btIconSource = "../images/svg/maximize_icon.svg"
             // Resize visibility
             internal.resetResizeBorders()
+        }
+
+        function enableHighDpi(){
+            if(Screen.desktopAvailableHeight > 1080){
+                //Qt.AA_EnableHighDpiScaling
+            }
         }
 
     }
@@ -313,6 +320,11 @@ Window {
                     anchors.bottom: parent.bottom
                     anchors.leftMargin: 0
                     anchors.bottomMargin: 25
+
+                    StackView {
+                        id: stackView
+                        anchors.fill: parent
+                    }
                 }
 
                 Rectangle {
